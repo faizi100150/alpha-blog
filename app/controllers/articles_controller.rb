@@ -14,10 +14,10 @@ def edit
 end
 
 def update
-  @article=Article.find(params[:id])
+
   if
     @article.update(article_params)
-    flash[:notice]="Artcle updated successfully"
+    flash[:notice]="Article has been updated successfully"
     redirect_to article_path(@article)
   else
     render 'edit'
