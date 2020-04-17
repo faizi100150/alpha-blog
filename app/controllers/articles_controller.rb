@@ -19,7 +19,7 @@ def update
 
   if
     @article.update(article_params)
-    flash[:success]="Article has been updated successfully"
+    flash[:success]='Article has been updated successfully'
     redirect_to article_path(@article)
   else
     render 'edit'
@@ -45,7 +45,7 @@ def destroy
 
 
   @article.destroy
-  flash[:danger]="Article was successfully deleted"
+  flash[:danger]='Article was successfully deleted'
   redirect_to articles_path
 end
 
@@ -60,8 +60,8 @@ end
 
 
  def require_same_user
-   if current_user != @article.user
-     flash[:danger] = "You can only edit,update or delete your own articles "
+   if current_user != @article.user and !current_user.admin
+     flash[:danger] = 'You can only edit,update or delete your own articles '
      redirect_to root_path
 
    end
